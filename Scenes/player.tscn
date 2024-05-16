@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://irelyx08tytv"]
+
+[ext_resource type="Texture2D" uid="uid://mu5sr1pl6usd" path="res://Assets/Aqua_assets/PlayerFishSwimForward-Sheet.png" id="1_ueos3"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_umhii"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_davjc"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lgxp"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_143gi"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d73hi"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t74w4"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbsoq"]
+atlas = ExtResource("1_ueos3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tcob"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_davjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lgxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_143gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d73hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t74w4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbsoq")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5wars"]
+radius = 19.815
+height = 127.82
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_umhii")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(7.38672, 8.27609)
+sprite_frames = SubResource("SpriteFrames_4tcob")
+animation = &"move"
+frame_progress = 0.688601
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+rotation = 1.43466
+shape = SubResource("CapsuleShape2D_5wars")
+one_way_collision_margin = 1.2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 100.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
